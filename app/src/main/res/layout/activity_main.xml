@@ -15,7 +15,13 @@
         android:textColor="#1430cf"
         android:layout_weight="0.29" />
     <Button
+        android:id="@+id/bu_calc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="CALC"/>
+    <Button
+        android:id="@+id/bu_contacts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Contacts"/>
 </LinearLayout>

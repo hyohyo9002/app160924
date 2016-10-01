@@ -1,4 +1,4 @@
-package com.abc.my.app160924;
+package com.abc.my.app160924.Calc;
 
 /**
  * Created by 1027 on 2016-09-24.
@@ -10,7 +10,7 @@ public class CalcServiceImpl implements  CalcService {
     public CalcDTO plus(CalcDTO cal) {
         int num1 = cal.getNum1();
         int num2 = cal.getNum2();
-        int result = num1 - num2;
+        int result = num1 + num2;
         cal.setResult(result);
         return cal;
     }
