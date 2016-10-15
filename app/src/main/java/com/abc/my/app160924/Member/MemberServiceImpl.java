@@ -1,9 +1,8 @@
 package com.abc.my.app160924.Member;
 
 import android.content.Context;
-import android.util.Log;
 
-import com.abc.my.app160924.util.Retval;
+import java.util.ArrayList;
 
 /**
  * Created by 1027 on 2016-10-01.
@@ -17,32 +16,40 @@ public class MemberServiceImpl implements MemberService  {
         this.dao = new MemberDAO(context);
     }
 
-    @Override
-    public MemberDTO login(MemberDTO param) {
-        Log.i("=== SERVICE에서 받은 ID : ",param.getId());
-        Log.i("=== SERVICE에서 받은 PW : ",param.getPw());
-        MemberDTO member = new MemberDTO();
-        member = dao.select(param);
-        if(member == null){
-            member.setId("NONE");
-            return member;
-        }else if(member.getPw().equals(param.getPw())){
-            return member;
-        }else{
-            member.setId("NO_MATCH");
-            return member;
-        }
 
+    @Override
+    public void regist(MemberDTO member) {
+        dao.insert(member);
     }
 
     @Override
-    public Retval join(MemberDTO param) {
-        Log.i("SERVICE에서 받은 ID : ",param.getId());
-        Log.i("SERVICE에서 받은 PW : ",param.getPw());
-        Log.i("SERVICE에서 받은 name : ",param.getName());
-        Log.i("SERVICE에서 받은 addr : ",param.getAddr());
-        Log.i("SERVICE에서 받은 email : ",param.getEmail());
-        Log.i("SERVICE에서 받은 phone : ",param.getPhone());
-        return dao.insert(param);
+    public ArrayList<MemberDTO> getlist() {
+
+        return dao.selectList();
+    }
+
+    @Override
+    public ArrayList<MemberDTO> getListByName(MemberDTO member) {
+        return dao.selectListByName(member);
+    }
+
+    @Override
+    public MemberDTO getOne(MemberDTO member) {
+        return dao.selectOne(member);
+    }
+
+    @Override
+    public int count() {
+        return dao.count();
+    }
+
+    @Override
+    public void update(MemberDTO member) {
+        dao.update(member);
+    }
+
+    @Override
+    public void unregist(MemberDTO member) {
+        dao.delete(member);
     }
 }
